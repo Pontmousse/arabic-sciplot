@@ -63,3 +63,8 @@ arabic_2d_axis_formatter(ax, invert_x=False, y_on_right=False,
 ## الترخيص
 
 MIT — انظر `LICENSE`.
+
+## للمطورين ووكلاء الذكاء الاصطناعي
+
+- [خارطة التطوير وتغطية أنواع الرسوم](docs/ROADMAP.md).
+- [دليل الوكيل لإنشاء الرسوم العلمية بالعربية](docs/AI_AGENT_GUIDE.md).
