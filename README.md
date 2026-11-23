@@ -44,6 +44,41 @@ arabic_2d_axis_formatter(ax, invert_x=False, y_on_right=False,
                          tick_direction="out", tick_length=4, tick_labelsize=12)
 ```
 
+### مثال ثلاثي الأبعاد (Matplotlib)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from arabic_sciplot import arabic_3d_axis_formatter
+
+t = np.linspace(0, 4 * np.pi, 300)
+fig = plt.figure()
+ax = fig.add_subplot(111, projection="3d")
+ax.plot(np.cos(t), np.sin(t), t)
+arabic_3d_axis_formatter(ax)
+ax.set_title("منحنى حلزوني ثلاثي الأبعاد")
+plt.show()
+```
+
+### مثال تدريجات رياضية (Plotly — تبعية اختيارية)
+
+للتشغيل: `pip install "arabic-sciplot[plotly]"` بعد نشر الحزمة، أو `pip install -e ".[plotly]"` من المستودع.
+
+```python
+import numpy as np
+import plotly.graph_objects as go
+from arabic_sciplot import generate_tickvals_and_text
+
+x = np.linspace(-np.pi, np.pi, 100)
+tickvals, ticktext = generate_tickvals_and_text(
+    x, num_ticks=5, use_pi_format=True
+)
+fig = go.Figure()
+fig.add_scatter(x=x, y=np.sin(x))
+fig.update_xaxes(title="س", tickvals=tickvals, ticktext=ticktext)
+fig.show()
+```
+
 ## اتجاه الكتابة والخطوط
 
 أضاف **Matplotlib 3.11** دعم تشكيل الحروف العربية وترتيب الكتابة من اليمين إلى اليسار. لذلك يعيد `arab(text)` النص نفسه دون تغييره، ولم نعد نستخدم `arabic-reshaper` أو `python-bidi`. **لا تُمرّر نصًا مُعاد تشكيله مسبقًا** إلى Matplotlib الجديد؛ فقد ينعكس ترتيبه مرتين.
@@ -54,11 +89,11 @@ arabic_2d_axis_formatter(ax, invert_x=False, y_on_right=False,
 
 ## أمثلة
 
-- `examples/basic_2d.py` — رسم علمي ثنائي الأبعاد.
-- `examples/plot_3d.py` — رسم حلزوني ثلاثي الأبعاد.
-- `examples/plotly_ticks.py` — تدريجات رياضية عربية في Plotly (إضافي).
-- `examples/vector_field.py` — حقل متجهات مأخوذ من [الموسوعة العربية](https://github.com/Pontmousse/alalbab/blob/main/resources/calculus/vector_calculus/curl2d.py).
-- `examples/spline_animation.py` — منحنى B-spline متحرك من [الموسوعة العربية](https://github.com/Pontmousse/alalbab/blob/main/resources/geometry/splines/bsplines/bspline.py)؛ ينشئ ملف GIF ويحتاج SciPy وPillow.
+- [`examples/basic_2d.py`](examples/basic_2d.py) — رسم علمي ثنائي الأبعاد.
+- [`examples/plot_3d.py`](examples/plot_3d.py) — رسم حلزوني ثلاثي الأبعاد.
+- [`examples/plotly_ticks.py`](examples/plotly_ticks.py) — تدريجات رياضية عربية في Plotly (إضافي).
+- [`examples/vector_field.py`](examples/vector_field.py) — حقل متجهات مأخوذ من [الموسوعة العربية](https://github.com/Pontmousse/alalbab/blob/main/resources/calculus/vector_calculus/curl2d.py).
+- [`examples/spline_animation.py`](examples/spline_animation.py) — منحنى B-spline متحرك من [الموسوعة العربية](https://github.com/Pontmousse/alalbab/blob/main/resources/geometry/splines/bsplines/bspline.py)؛ ينشئ ملف GIF ويحتاج SciPy وPillow.
 
 ## الترخيص
 
@@ -68,3 +103,4 @@ MIT — انظر `LICENSE`.
 
 - [خارطة التطوير وتغطية أنواع الرسوم](docs/ROADMAP.md).
 - [دليل الوكيل لإنشاء الرسوم العلمية بالعربية](docs/AI_AGENT_GUIDE.md).
+- [تعليمات مختصرة لوكلاء البرمجة](AGENTS.md).
