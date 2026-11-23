@@ -40,11 +40,20 @@ fig.savefig("response.png", dpi=180)
 
 ## أمثلة مرجعية فعلية في المستودع
 
-- `examples/basic_2d.py`: أساسيات الرسم الثنائي.
-- `examples/plot_3d.py`: منحنى ثلاثي الأبعاد.
-- `examples/plotly_ticks.py`: تدريجات رقمية في Plotly، ويتطلب تبعية اختيارية.
-- `examples/vector_field.py`: حقل متجهات.
-- `examples/spline_animation.py`: منحنى B-spline متحرك، ويتطلب تبعيات اختيارية.
+- [`examples/basic_2d.py`](../examples/basic_2d.py): أساسيات الرسم الثنائي.
+- [`examples/plot_3d.py`](../examples/plot_3d.py): منحنى ثلاثي الأبعاد.
+- [`examples/plotly_ticks.py`](../examples/plotly_ticks.py): تدريجات رقمية في Plotly، ويتطلب تبعية اختيارية.
+- [`examples/vector_field.py`](../examples/vector_field.py): حقل متجهات.
+- [`examples/spline_animation.py`](../examples/spline_animation.py): منحنى B-spline متحرك، ويتطلب تبعيات اختيارية.
+
+## أمثلة أخرى وأساليب الرسم
+
+- راجع [مثال 3D المباشر](../examples/plot_3d.py) لتنسيق محور ثلاثي الأبعاد.
+- راجع [مثال Plotly](../examples/plotly_ticks.py) لتوليد تسميات مضاعفات π؛ `arabic_2d_axis_formatter` و`arabic_3d_axis_formatter` خاصتان بمحاور Matplotlib.
+- راجع [حقل المتجهات](../examples/vector_field.py) و[المنحنى المتحرك](../examples/spline_animation.py) لرسوم علمية أكثر تعقيدًا.
+- تتشارك `scatter`، `contourf`، `quiver`، `plot_surface` وغيرها في تنسيق المحاور؛ لا توجد دوال رسم مستقلة داخل الحزمة لكل نوع.
+
+**تنبيه:** هذه الملفات موجودة في المستودع العام، ولا تُثبَّت تلقائيًا في `site-packages` عند `pip install arabic-sciplot`. يمكن للوكيل قراءة الأمثلة عبر روابط GitHub؛ بينما تتوافر الدوال البرمجية نفسها بعد التثبيت.
 
 ## متطلبات التشغيل
 
