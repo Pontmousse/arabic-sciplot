@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arabic-sciplot"
+version = "0.1.0"
+description = "أدوات عربية خفيفة لتنسيق الرسوم البيانية العلمية"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "El Ghali Asri" }]
+dependencies = [
+  "numpy>=1.26",
+  "matplotlib>=3.11",
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Visualization",
+]
+
+[project.optional-dependencies]
+plotly = ["plotly>=5"]
+examples = ["plotly>=5", "scipy>=1.13", "pillow>=10"]
+
+[project.urls]
+Repository = "https://github.com/Pontmousse/arabic-sciplot"
+Issues = "https://github.com/Pontmousse/arabic-sciplot/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
