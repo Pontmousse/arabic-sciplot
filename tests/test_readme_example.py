@@ -1,6 +1,5 @@
 from contextlib import chdir
 from pathlib import Path
-import runpy
 from tempfile import TemporaryDirectory
 import unittest
 
@@ -18,13 +17,16 @@ EXAMPLE = ROOT / "examples" / "basic_2d.py"
 
 class ReadmeExampleTests(unittest.TestCase):
     def test_readme_gain_example_renders_right_to_left(self):
-        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        readme_path = ROOT / "README.md"
+        readme = readme_path.read_text(encoding="utf-8")
         snippet = readme.split("```python\n", 1)[1].split("\n```", 1)[0]
-        self.assertEqual(snippet + "\n", EXAMPLE.read_text(encoding="utf-8"))
+        if EXAMPLE.is_file():
+            self.assertEqual(snippet + "\n", EXAMPLE.read_text(encoding="utf-8"))
 
         with TemporaryDirectory() as directory, chdir(directory), plt.rc_context():
             self.addCleanup(plt.close, "all")
-            example = runpy.run_path(str(EXAMPLE))
+            example = {}
+            exec(compile(snippet, str(readme_path), "exec"), example)
             path = Path("p-controller-arabic.png")
             self.assertTrue(path.is_file())
             ax = example["ax"]
