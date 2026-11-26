@@ -44,13 +44,3 @@ class ReadmeExampleTests(unittest.TestCase):
                 self.assertTrue(np.all(np.diff(points[:, 0]) < 0))
                 self.assertTrue(np.all(np.diff(points[:, 1]) > 0))
                 self.assertAlmostEqual(curve.get_ydata()[-1], steady_level, delta=0.02)
-
-            # Emit the generated README preview so it can be added to this branch.
-            import base64
-            from io import BytesIO
-
-            preview = BytesIO()
-            example["fig"].savefig(preview, format="png", dpi=145, pil_kwargs={"optimize": True})
-            encoded = base64.b64encode(preview.getvalue()).decode("ascii")
-            for offset in range(0, len(encoded), 3000):
-                print(f"RTL_PNG_{offset:06d}:{encoded[offset:offset + 3000]}")

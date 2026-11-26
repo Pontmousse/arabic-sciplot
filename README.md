@@ -38,6 +38,7 @@ import matplotlib
 matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 from matplotlib.ticker import FuncFormatter
 import numpy as np
 
@@ -53,8 +54,11 @@ navy = "#192e47"
 muted = "#4d6074"
 teal = "#087c78"
 rust = "#ac5023"
+font_family = ["DejaVu Sans"]
+if "Noto Sans Arabic" in font_manager.get_font_names():
+    font_family.insert(0, "Noto Sans Arabic")
 plt.rcParams.update({
-    "font.family": ["Noto Sans Arabic", "DejaVu Sans"],
+    "font.family": font_family,
     "text.color": navy,
     "axes.labelcolor": navy,
     "xtick.color": muted,
